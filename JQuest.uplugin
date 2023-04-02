@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "JQuest",
+	"Description": "A Quest System",
+	"Category": "Other",
+	"CreatedBy": "Lazarus",
+	"CreatedByURL": "https://github.com/Lazarus-glhf",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "JQuest",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
