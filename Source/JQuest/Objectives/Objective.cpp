@@ -23,3 +23,8 @@ void UObjective::ActiveObjective()
 	bIsActive = true;
 }
 
+void UObjective::SetObjectiveName(FName name)
+{
+	ObjectiveName = name;
+}
+

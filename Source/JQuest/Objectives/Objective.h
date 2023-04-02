@@ -6,6 +6,8 @@
 #include "UObject/NoExportTypes.h"
 #include "Objective.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCompleted, UObjective*, obj);
+
 /**
  * 
  */
@@ -27,6 +29,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void ActiveObjective();
 
+	void SetObjectiveName(FName name);
+
+	FOnCompleted OnCompleted;
 private:
 	FName ObjectiveName;
 

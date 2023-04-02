@@ -8,11 +8,7 @@ void UObjCollection::ActiveObjective()
 	Super::ActiveObjective();
 	if (bOrderRequired)
 	{
-		UObjective* obj = FindNexIncompleteObjective();
-		if (obj)
-		{
-			obj->ActiveObjective();
-		}
+		HandleOrderRequired();
 	}
 	else
 	{
@@ -21,6 +17,18 @@ void UObjCollection::ActiveObjective()
 			obj->ActiveObjective();
 		}
 	}
+}
+
+bool UObjCollection::GetIsComplete() const
+{
+	for (UObjective* obj : Objectives)
+	{
+		if (!obj->GetIsComplete())
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 UObjective* UObjCollection::FindNexIncompleteObjective()
@@ -35,4 +43,26 @@ UObjective* UObjCollection::FindNexIncompleteObjective()
 
 	UObjective* objnull = nullptr;
 	return objnull;
+}
+
+void UObjCollection::HandleOrderRequired()
+{
+	UObjective* obj = FindNexIncompleteObjective();
+	if (obj)
+	{
+		obj->ActiveObjective();
+
+		obj->OnCompleted.AddDynamic(this, &UObjCollection::OnCompleteEvent);
+	}
+}
+
+void UObjCollection::OnCompleteEvent(UObjective* obj)
+{
+	obj->OnCompleted.RemoveDynamic(this, &UObjCollection::OnCompleteEvent);
+	HandleOrderRequired();
+}
+
+void UObjCollection::AddObjective(UObjective* obj)
+{
+	Objectives.Add(obj);
 }

@@ -43,6 +43,10 @@ void AQuest::Tick(float DeltaTime)
 
 }
 
+void AQuest::ActiveObjective()
+{
+}
+
 UObjCollection* AQuest::ConstructRootObjectiveCollection()
 {
 	UObjCollection* UC = nullptr;

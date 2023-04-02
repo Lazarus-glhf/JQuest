@@ -30,10 +30,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-private:
+	virtual void ActiveObjective();
+
 	UPROPERTY()
 	UObjCollection* RootObjectiveCollection;
-	
+
+private:
 	virtual UObjCollection* ConstructRootObjectiveCollection();
+
 	virtual void PopulateObjectives(UObjCollection* RootCollection);
 };
