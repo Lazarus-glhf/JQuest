@@ -18,8 +18,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
 	bool bOrderRequired;
 
-	UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
-	FName ObjectiveName;
+	/*UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
+	FName ObjectiveName;*/
 
 	UPROPERTY(BlueprintReadWrite)
 	TArray<UObjective*> Objectives;

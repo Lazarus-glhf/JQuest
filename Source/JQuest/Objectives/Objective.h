@@ -11,14 +11,14 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCompleted, UObjective*, obj);
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Blueprintable, config = Engine)
 class JQUEST_API UObjective : public UObject
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
-	FName GetObjectiveName() const;
+	FText GetObjectiveName() const;
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	virtual bool GetIsComplete() const;
@@ -29,11 +29,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void ActiveObjective();
 
-	void SetObjectiveName(FName name);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText ObjectiveName;
+
+	void SetObjectiveName(FText name);
 
 	FOnCompleted OnCompleted;
 private:
-	FName ObjectiveName;
-
 	bool bIsActive;
 };

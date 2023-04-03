@@ -13,7 +13,8 @@ void AQuestReach::PopulateObjectives(UObjCollection* RootCollection)
 	{
 		ObjReach->Destination = MegatonTrigger;
 	}
-	ObjReach->SetObjectiveName(FName("Reach megaton"));
+
+	ObjReach->SetObjectiveName(FText::FromString("Reached Magaton"));
 
 	RootObjectiveCollection->AddObjective(ObjReach);
 }
@@ -23,7 +24,7 @@ UObjCollection* AQuestReach::ConstructRootObjectiveCollection()
 	UObjCollection* UC = NewObject<UObjCollection>(this);
 
 	UC->bOrderRequired = true;
-	UC->ObjectiveName = FName("Long way from home");
+	UC->ObjectiveName = FText(FText::FromString("Long way from home"));
 
 	return UC;
 }
