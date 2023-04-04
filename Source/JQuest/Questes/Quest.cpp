@@ -15,12 +15,12 @@ AQuest::AQuest()
 
 }
 
-UObjCollection* AQuest::GetRootObjCollection() const
+UObjectiveCollection* AQuest::GetRootObjCollection() const
 {
 	return RootObjectiveCollection;
 }
 
-void AQuest::PopulateObjectives(UObjCollection* RootCollection)
+void AQuest::PopulateObjectives(UObjectiveCollection* RootCollection)
 {
 }
 
@@ -33,6 +33,7 @@ void AQuest::BeginPlay()
 	PopulateObjectives(RootObjectiveCollection);
 
 	// TODO Active Root Objectives
+	RootObjectiveCollection->ActiveObjective();
 	
 }
 
@@ -47,9 +48,9 @@ void AQuest::ActiveObjective()
 {
 }
 
-UObjCollection* AQuest::ConstructRootObjectiveCollection()
+UObjectiveCollection* AQuest::ConstructRootObjectiveCollection()
 {
-	UObjCollection* UC = nullptr;
+	UObjectiveCollection* UC = nullptr;
 	return UC;
 }
 

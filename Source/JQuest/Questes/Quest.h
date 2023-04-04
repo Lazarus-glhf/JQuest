@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "JQuest/Objectives/ObjCollection.h"
+#include "JQuest/Objectives/ObjectiveCollection.h"
 #include "Quest.generated.h"
 
 UCLASS()
@@ -20,7 +20,7 @@ public:
 	UBillboardComponent* Billboard;
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
-	UObjCollection* GetRootObjCollection() const;
+	UObjectiveCollection* GetRootObjCollection() const;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -33,10 +33,10 @@ public:
 	virtual void ActiveObjective();
 
 	UPROPERTY()
-	UObjCollection* RootObjectiveCollection;
+	UObjectiveCollection* RootObjectiveCollection;
 
 private:
-	virtual UObjCollection* ConstructRootObjectiveCollection();
+	virtual UObjectiveCollection* ConstructRootObjectiveCollection();
 
-	virtual void PopulateObjectives(UObjCollection* RootCollection);
+	virtual void PopulateObjectives(UObjectiveCollection* RootCollection);
 };

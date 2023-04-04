@@ -2,26 +2,11 @@
 
 
 #include "QuestReach.h"
-#include "Components/BoxComponent.h"
-
 #include "JQuest/Objectives/ObjReachDestination.h"
 
-void AQuestReach::PopulateObjectives(UObjCollection* RootCollection)
+UObjectiveCollection* AQuestReach::ConstructRootObjectiveCollection()
 {
-	UObjReachDestination* ObjReach = NewObject<UObjReachDestination>(this);
-	if (MegatonTrigger)
-	{
-		ObjReach->Destination = MegatonTrigger;
-	}
-
-	ObjReach->SetObjectiveName(FText::FromString("Reached Magaton"));
-
-	RootObjectiveCollection->AddObjective(ObjReach);
-}
-
-UObjCollection* AQuestReach::ConstructRootObjectiveCollection()
-{
-	UObjCollection* UC = NewObject<UObjCollection>(this);
+	UObjectiveCollection* UC = NewObject<UObjectiveCollection>(this);
 
 	UC->bOrderRequired = true;
 	UC->ObjectiveName = FText(FText::FromString("Long way from home"));
@@ -29,3 +14,15 @@ UObjCollection* AQuestReach::ConstructRootObjectiveCollection()
 	return UC;
 }
 
+void AQuestReach::PopulateObjectives(UObjectiveCollection* RootCollection)
+{
+	UObjReachDestination* ObjReach = NewObject<UObjReachDestination>(this);
+	if (MegatonTrigger)
+	{
+		ObjReach->DestinationBox = MegatonTrigger;
+	}
+
+	ObjReach->SetObjectiveName(FText::FromString("Reached Magaton"));
+
+	RootObjectiveCollection->AddObjective(ObjReach);
+}

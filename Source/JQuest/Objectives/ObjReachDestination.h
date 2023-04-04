@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/TriggerBox.h"
+#include "JQuest/Tools/ReachBox.h"
 #include "Objective.h"
 #include "ObjReachDestination.generated.h"
 
@@ -16,15 +16,17 @@ class JQUEST_API UObjReachDestination : public UObjective
 	GENERATED_BODY()
 
 public:
+	// Ä¿µÄµØ TriggerBox
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ATriggerBox* Destination;
+	AReachBox* DestinationBox;
 
 	virtual void ActiveObjective() override;
 
 	virtual bool GetIsComplete() const override;
 
+	UFUNCTION()
+	void ObjReachHandleOverlapEvent(AActor* OverlappedActor, AActor* OtherActor);
+
 private:
 	bool bReachedDestination = false;
-
-	virtual void HandleOverlapEvent(AActor* OverlappedActor, AActor* OtherActor);
 };

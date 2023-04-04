@@ -26,4 +26,3 @@ void UObjective::SetObjectiveName(FText name)
 {
 	ObjectiveName = name;
 }
-

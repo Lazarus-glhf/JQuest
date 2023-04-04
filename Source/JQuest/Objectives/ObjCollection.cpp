@@ -52,13 +52,14 @@ void UObjCollection::HandleOrderRequired()
 	{
 		obj->ActiveObjective();
 
-		obj->OnCompleted.AddDynamic(this, &UObjCollection::OnCompleteEvent);
+		obj->OnCompleted.AddDynamic(this, &UObjCollection::CollectionOnCompleteEvent);
 	}
 }
 
-void UObjCollection::OnCompleteEvent(UObjective* obj)
+void UObjCollection::CollectionOnCompleteEvent(UObjective* obj)
 {
-	obj->OnCompleted.RemoveDynamic(this, &UObjCollection::OnCompleteEvent);
+	GEngine->AddOnScreenDebugMessage(0, 5.0f, FColor::Red, TEXT("Quest Completed"));
+	obj->OnCompleted.RemoveDynamic(this, &UObjCollection::CollectionOnCompleteEvent);
 	HandleOrderRequired();
 }
 

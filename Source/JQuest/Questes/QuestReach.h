@@ -15,14 +15,12 @@ class JQUEST_API AQuestReach : public AQuest
 	GENERATED_BODY()
 
 public:
-	UPROPERTY()
-	class ATriggerBox* MegatonTrigger;
-
-	UPROPERTY(BlueprintReadOnly)
-	bool bReachedDestination = false;
+	// 盒体检测，判断是否到达了目的地
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class AReachBox* MegatonTrigger;
 
 private:
-	virtual void PopulateObjectives(UObjCollection* RootCollection) override;
+	virtual void PopulateObjectives(UObjectiveCollection* RootCollection) override;
 
-	virtual UObjCollection* ConstructRootObjectiveCollection() override;
+	virtual UObjectiveCollection* ConstructRootObjectiveCollection() override;
 };

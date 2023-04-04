@@ -5,16 +5,17 @@
 
 void UObjReachDestination::ActiveObjective()
 {
+	GEngine->AddOnScreenDebugMessage(0, 5.0f, FColor::Yellow, TEXT("Activing ReachObjective"));
 	Super::ActiveObjective();
 
 	// TODO Add Type Check
-
-	Destination->OnActorBeginOverlap.AddDynamic(this, &UObjReachDestination::HandleOverlapEvent);
+	DestinationBox->OnActorBeginOverlap.AddDynamic(this, &UObjReachDestination::ObjReachHandleOverlapEvent);
 }
 
-void UObjReachDestination::HandleOverlapEvent(AActor* OverlappedActor, AActor* OtherActor)
+void UObjReachDestination::ObjReachHandleOverlapEvent(AActor* OverlappedActor, AActor* OtherActor)
 {
-	Destination->OnActorBeginOverlap.RemoveDynamic(this, &UObjReachDestination::HandleOverlapEvent);
+	GEngine->AddOnScreenDebugMessage(0, 5.0f, FColor::Blue, TEXT("Handling OverlapEvent"));
+	DestinationBox->OnActorBeginOverlap.RemoveDynamic(this, &UObjReachDestination::ObjReachHandleOverlapEvent);
 
 	bReachedDestination = true;
 

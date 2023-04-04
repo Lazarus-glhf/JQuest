@@ -17,6 +17,9 @@ class JQUEST_API UObjective : public UObject
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText ObjectiveName;
+
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	FText GetObjectiveName() const;
 
@@ -28,9 +31,6 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	virtual void ActiveObjective();
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText ObjectiveName;
 
 	void SetObjectiveName(FText name);
 
