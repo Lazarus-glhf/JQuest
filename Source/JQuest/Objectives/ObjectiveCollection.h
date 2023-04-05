@@ -18,8 +18,11 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
 	bool bOrderRequired;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<UObjective*> Objectives;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	UObjective* CurrentObj;
 
 	UFUNCTION()
 	void CollectionOnCompleteEvent(UObjective* obj);

@@ -18,6 +18,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
 	bool bOrderRequired;
 
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	UObjective* CurrentObj;
+
 	UPROPERTY(BlueprintReadWrite)
 	TArray<UObjective*> Objectives;
 	/*

@@ -16,8 +16,14 @@ public:
 	// Sets default values for this actor's properties
 	AQuest();
 
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	FText CurrentObjName;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UBillboardComponent* Billboard;
+
+	UPROPERTY()
+	UObjectiveCollection* RootObjectiveCollection;
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	UObjectiveCollection* GetRootObjCollection() const;
@@ -31,9 +37,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void ActiveObjective();
-
-	UPROPERTY()
-	UObjectiveCollection* RootObjectiveCollection;
 
 private:
 	virtual UObjectiveCollection* ConstructRootObjectiveCollection();

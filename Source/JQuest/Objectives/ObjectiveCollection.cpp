@@ -47,12 +47,12 @@ UObjective* UObjectiveCollection::FindNexIncompleteObjective()
 
 void UObjectiveCollection::HandleOrderRequired()
 {
-	UObjective* obj = FindNexIncompleteObjective();
-	if (obj)
+	CurrentObj = FindNexIncompleteObjective();
+	if (CurrentObj)
 	{
-		obj->ActiveObjective();
+		CurrentObj->ActiveObjective();
 
-		obj->OnCompleted.AddDynamic(this, &UObjectiveCollection::CollectionOnCompleteEvent);
+		CurrentObj->OnCompleted.AddDynamic(this, &UObjectiveCollection::CollectionOnCompleteEvent);
 	}
 }
 
@@ -65,5 +65,8 @@ void UObjectiveCollection::CollectionOnCompleteEvent(UObjective* obj)
 
 void UObjectiveCollection::AddObjective(UObjective* obj)
 {
-	Objectives.Add(obj);
+	if (obj)
+	{
+		Objectives.Add(obj);
+	}
 }

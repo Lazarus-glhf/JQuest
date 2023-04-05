@@ -14,6 +14,16 @@ UObjectiveCollection* AReachQuest::ConstructRootObjectiveCollection()
 	return UC;
 }
 
+void AReachQuest::AddReachQuestObject()
+{
+	UObjReachDestination* Obj = NewObject<UObjReachDestination>(this);
+
+	Obj->SetObjectiveName(QuestName);
+	Obj->DestinationBox = QuestTrigger;
+
+	QuestObjectives.Add(Obj);
+}
+
 void AReachQuest::PopulateObjectives(UObjectiveCollection* RootCollection)
 {
 	UObjReachDestination* ObjReach = NewObject<UObjReachDestination>(this);
@@ -25,4 +35,8 @@ void AReachQuest::PopulateObjectives(UObjectiveCollection* RootCollection)
 	ObjReach->SetObjectiveName(FText::FromString("Reached Magaton"));
 
 	RootObjectiveCollection->AddObjective(ObjReach);
+	for (UObjective* Obj : QuestObjectives)
+	{
+		RootObjectiveCollection->AddObjective(Obj);
+	}
 }

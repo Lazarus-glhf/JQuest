@@ -42,6 +42,13 @@ void AQuest::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (RootObjectiveCollection)
+	{
+		if (RootObjectiveCollection->CurrentObj)
+		{
+			CurrentObjName = RootObjectiveCollection->CurrentObj->GetObjectiveName();
+		}
+	}
 }
 
 void AQuest::ActiveObjective()

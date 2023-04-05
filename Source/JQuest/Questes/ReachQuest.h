@@ -19,6 +19,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class AReachBox* MegatonTrigger;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	TArray<UObjective*> QuestObjectives;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "New Quest")
+	FText QuestName;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "New Quest")
+	class AReachBox* QuestTrigger;
+
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "NewQuest")
+	void AddReachQuestObject();
 private:
 	virtual void PopulateObjectives(UObjectiveCollection* RootCollection) override;
 
