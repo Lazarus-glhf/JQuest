@@ -6,6 +6,8 @@
 #include "Objective.h"
 #include "ObjectiveCollection.generated.h"
 
+DECLARE_DELEGATE_OneParam(FActiveQuestDelegate, UObjective*)
+DECLARE_DELEGATE(FCompleteQuestDelegate)
 /**
  * 
  */
@@ -23,6 +25,10 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	UObjective* CurrentObj;
+
+	FActiveQuestDelegate ActiveQuestDelegate;
+
+	FCompleteQuestDelegate CompleteQuestDelegate;
 
 	UFUNCTION()
 	void CollectionOnCompleteEvent(UObjective* obj);

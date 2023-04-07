@@ -22,7 +22,6 @@ void AQuestReach::PopulateObjectives(UObjectiveCollection* RootCollection)
 		ObjReach->DestinationBox = MegatonTrigger;
 	}
 
-	ObjReach->SetObjectiveName(FText::FromString("Reached Magaton"));
 
 	RootObjectiveCollection->AddObjective(ObjReach);
 }

@@ -32,23 +32,13 @@ void AQuest::BeginPlay()
 	RootObjectiveCollection = ConstructRootObjectiveCollection();
 	PopulateObjectives(RootObjectiveCollection);
 
-	// TODO Active Root Objectives
 	RootObjectiveCollection->ActiveObjective();
-	
 }
 
 // Called every frame
 void AQuest::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	if (RootObjectiveCollection)
-	{
-		if (RootObjectiveCollection->CurrentObj)
-		{
-			CurrentObjName = RootObjectiveCollection->CurrentObj->GetObjectiveName();
-		}
-	}
 }
 
 void AQuest::ActiveObjective()

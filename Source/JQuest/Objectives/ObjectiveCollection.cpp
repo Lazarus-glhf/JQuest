@@ -37,6 +37,7 @@ UObjective* UObjectiveCollection::FindNexIncompleteObjective()
 	{
 		if (!obj->GetIsComplete())
 		{
+			ActiveQuestDelegate.ExecuteIfBound(obj);
 			return obj;
 		}
 	}
@@ -58,8 +59,8 @@ void UObjectiveCollection::HandleOrderRequired()
 
 void UObjectiveCollection::CollectionOnCompleteEvent(UObjective* obj)
 {
-	GEngine->AddOnScreenDebugMessage(0, 5.0f, FColor::Red, TEXT("Quest Completed"));
 	obj->OnCompleted.RemoveDynamic(this, &UObjectiveCollection::CollectionOnCompleteEvent);
+	CompleteQuestDelegate.ExecuteIfBound();
 	HandleOrderRequired();
 }
 

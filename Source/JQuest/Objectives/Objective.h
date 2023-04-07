@@ -17,8 +17,17 @@ class JQUEST_API UObjective : public UObject
 	GENERATED_BODY()
 
 public:
+	// 任务名称
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText ObjectiveName;
+
+	// 任务计时
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float TimeCount;
+
+	// 任务分数
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float ObjectiveGrade;
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	FText GetObjectiveName() const;
@@ -32,7 +41,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void ActiveObjective();
 
-	void SetObjectiveName(FText name);
+	/*
+	 * @param name 任务名称
+	 * @param Time 任务计时
+	 * @param Grade 任务分数
+	 */
+	void SetObjectiveBaseProperty(FText Name, float Time, float Grade);
 
 	FOnCompleted OnCompleted;
 private:

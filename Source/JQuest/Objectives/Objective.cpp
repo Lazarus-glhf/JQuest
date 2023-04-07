@@ -22,7 +22,9 @@ void UObjective::ActiveObjective()
 	bIsActive = true;
 }
 
-void UObjective::SetObjectiveName(FText name)
+void UObjective::SetObjectiveBaseProperty(FText Name, float Time, float Grade)
 {
-	ObjectiveName = name;
+	ObjectiveName = Name;
+	TimeCount = Time;
+	ObjectiveGrade = Grade;
 }
